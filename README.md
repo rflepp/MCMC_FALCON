@@ -80,7 +80,7 @@ Additionally, note that to utilise MCMC sampling, several additional parameters 
 The additional parameters to take note of are:
 - `type_in=''` : Whether to use IMHK (`'imhk'`), SMK (`'smk'`), MALK (`'malk'`), HMCK (`'hmck'`) or no MCMC sampling, i.e., original FALCON, (default value of `''`).
 - `sigma_og=None` : The original sigma to sample with, for IMHK and SMK. Recommended parameters are 65-75 for IMHK, and 60 for SMK (n = 512).
-- `sigma_new=30` : The subsequent sigma to sample with for the SMK, as part of the two-stage sampling process. Recommended parameter is the default value of 30 (n = 512).
+- `sigma_new=30` : The subsequent sigma to sample with for the SMK, MALK, HMCK, as part of the two-stage sampling process. Recommended parameter is the default value of 30 for SMK (n = 512) and 2-30 for MALK and HMCK (n = 128).
 - `h = 2300`: The step size chosen for MALK and HMCK. Optimal values are different for each algorithm and deepends on other parameter values.
 - `k_hmc = 3` : The number of steps that the Leapfrog integrator in the HMCK algorithm should perform.
 - `i_mix_sym=1000` : Mixing time for SMK. Recommended parameter is the default value of 1000 (n = 512).
@@ -102,12 +102,12 @@ To sign with SMK:
 
 To sign with MALK:
 ```
->>> sig = sk.sign(b"Hello", type_in='malk', sigma_og=60, sigma_new=20, h = 300, i_mix_sym=10)
+>>> sig = sk.sign(b"Hello", type_in='malk', sigma_og=60, sigma_new=20, h = 2300, i_mix_sym=10)
 ```
 
 To sign with MHCK:
 ```
->>> sig = sk.sign(b"Hello", type_in='hmck', sigma_og=60, sigma_new=20, h = 4, k_hmc =8, i_mix_sym=10)
+>>> sig = sk.sign(b"Hello", type_in='hmck', sigma_og=50, sigma_new=20, h = 10, k_hmc =8, i_mix_sym=10)
 ```
 
 Note: Tested on Python 3.9.5. If you have poetry, you can use `poetry install` to install all necessary dependencies.
