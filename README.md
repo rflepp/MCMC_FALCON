@@ -66,8 +66,7 @@ Refer to [FALCON README.md](falcon_mcmc/README.md) for detailed instructions. Su
 >>> import falcon
 >>> sk = falcon.SecretKey(128)
 >>> pk = falcon.PublicKey(sk)
->>> sig = sk.sign(b"Hello", type_in='hmck', sigma_og=50, sigma_new=2, 
-h=0.25, k_hmc = 13, i_mix_sym=10)
+>>> sig = sk.sign(b"Hello", type_in='hmck', sigma_og=50, sigma_new=10,h=10, k_hmc=8,i_mix_sym=20)
 >>> pk.verify(b"Hello", sig)
 True
 ```
