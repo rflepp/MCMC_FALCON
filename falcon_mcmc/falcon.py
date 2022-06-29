@@ -229,6 +229,7 @@ class SecretKey:
         #TODO: change sigma and signature_bound
         self.sigma = Params[n]["sigma"]
         self.sigmin = Params[n]["sigmin"]
+        self.sigma_old = None
         self.signature_bound = floor(Params[n]["sig_bound"])
         self.sig_bytelen = Params[n]["sig_bytelen"]
 
@@ -359,11 +360,13 @@ class SecretKey:
         print("z_test: ", test_norm)
         '''
 
-        if sigma_new is not None and type_in != 'imhk':
+        if self.sigma_old is not None and sigma_new is not None and type_in != 'imhk':
             # normalize tree
             self.sigma = float(sigma_new)
             self.T_fft = deepcopy(self.orig_T_fft)
             normalize_tree(self.T_fft, float(sigma_new))
+            # factor for MALK and HMCK
+            h_factor = h / (self.sigma_old ** 2)
 
         ''''Testing
         print("imix: ", i_mix)
