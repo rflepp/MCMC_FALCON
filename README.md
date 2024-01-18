@@ -1,7 +1,7 @@
 # Simple experimental blockchain to test post-quantum signature scheme including the MALA algorithm
 
 ## Blockchain
-Source code adapted from [dvf/blockchain](https://github.com/dvf/blockchain) and [Falcon Blockchain](https://github.com/samuelgoh1525/falcon-blockchain). Primarily modified by adding two Trapdoor sampling algorithms, namely MALA for Lattice-Gaussian sampling(MALK) and HMC for lattice-Gaussian sampling (HMCK).
+Source code adapted from [dvf/blockchain](https://github.com/dvf/blockchain) and [Falcon Blockchain](https://github.com/samuelgoh1525/falcon-blockchain). Primarily modified by adding two Trapdoor sampling algorithms, namely MALA for Lattice-Gaussian sampling (MALK) and HMC for lattice-Gaussian sampling (HMCK).
 
 ### Running instructions
 ```
